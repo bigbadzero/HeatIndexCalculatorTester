@@ -1,4 +1,5 @@
 import java.lang.Math;
+import java.text.DecimalFormat;
 
 public class HeatIndexCalculator {
     private int temperature;
@@ -27,12 +28,12 @@ public class HeatIndexCalculator {
 
         double HI = c1 + (c2 * T) + (c3 * R) + (c4 * T * R) + (c5 * Math.pow(T, 2)) + (c6 * Math.pow(R, 2))
                 + (c7 * Math.pow(T, 2) * R) + (c8 * T * Math.pow(R, 2)) + (c9 * Math.pow(T, 2) * Math.pow(R, 2));
-
         return HI;
     }
 
     public void printHeatIndex(){
+        DecimalFormat df = new DecimalFormat("#.##");
         System.out.println("At a temperature of " + this.temperature + " and a humidity of " + this.humidity + " percent...");
-        System.out.println("It actually feels like: " + this.heatIndex + "F");
+        System.out.println("It actually feels like: " + df.format(this.heatIndex) + "F");
     }
 }
